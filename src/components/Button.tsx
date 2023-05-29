@@ -8,7 +8,7 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;

@@ -1,9 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Formik, Field, Form } from "formik";
+import { Formik, Form } from "formik";
 import styled from "styled-components";
 import Button from "../components/Button";
+import FormikInput from "@/components/formik/FormikInput";
+import { loginFormInitialValues, loginValidationSchema } from "./const";
 
 const Container = styled.div`
   display: flex;
@@ -21,22 +23,17 @@ const StyledForm = styled(Form)`
   border-radius: 10px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   background-color: white;
+  width: 500px;
 `;
 
 const FormItem = styled.div`
   margin-bottom: 1em;
+  width: 100%;
 `;
 
-const StyledField = styled(Field)`
-  padding: 0.75em;
-  width: 200px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-`;
-
-const Label = styled.div`
-  font-weight: 600;
-  color: #555;
+const StyledButton = styled(Button)`
+  margin-top: 0.5em;
+  width: 100%;
 `;
 
 const HomePage = () => {
@@ -49,19 +46,23 @@ const HomePage = () => {
   return (
     <Container>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={loginFormInitialValues}
+        validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
       >
         <StyledForm>
           <FormItem>
-            <Label>Email</Label>
-            <StyledField type="email" name="email" required />
+            <FormikInput type="email" name="email" label="Email" required />
           </FormItem>
           <FormItem>
-            <Label>Password:</Label>
-            <StyledField type="password" name="password" required />
+            <FormikInput
+              type="password"
+              name="password"
+              label="Password"
+              required
+            />
           </FormItem>
-          <Button type="submit">Log in</Button>
+          <StyledButton type="submit">Log in</StyledButton>
         </StyledForm>
       </Formik>
     </Container>
