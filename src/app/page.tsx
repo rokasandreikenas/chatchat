@@ -36,7 +36,7 @@ const StyledButton = styled(Button)`
   width: 100%;
 `;
 
-const HomePage = () => {
+const LoginPage = () => {
   const router = useRouter();
 
   const handleSubmit = () => {
@@ -69,4 +69,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LoginPage;
