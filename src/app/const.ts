@@ -1,5 +1,5 @@
-import { User } from "@/types/user";
 import * as Yup from "yup";
+import { User } from "@/types/user";
 
 export const loginFormInitialValues: User = {
   email: "",
