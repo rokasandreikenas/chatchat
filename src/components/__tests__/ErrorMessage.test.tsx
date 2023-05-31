@@ -1,6 +1,6 @@
-import theme from "@/styles/theme";
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
+import theme from "@/styles/theme";
 import ErrorMessage from "../inputs/ErrorMessage";
 
 describe("ErrorMessage", () => {
