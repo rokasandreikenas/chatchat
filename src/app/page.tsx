@@ -1,9 +1,9 @@
 "use client";
 
+import { Form, Formik } from "formik";
 import { useRouter } from "next/navigation";
-import { Formik, Form } from "formik";
 import styled from "styled-components";
-import Button from "../components/Button";
+import Button from "@/components/Button";
 import FormikInput from "@/components/formik/FormikInput";
 import { loginFormInitialValues, loginValidationSchema } from "./const";
 

@@ -1,18 +1,7 @@
+import theme from "@/styles/theme";
 import { render } from "@testing-library/react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import Button from "../Button";
-
-const theme: DefaultTheme = {
-  colors: {
-    primary: "#0070f3",
-    secondary: "#0051a2",
-    lightGrey: "#ddd",
-    darkGrey: "#555",
-    white: "#fff",
-    background: "#fafafa",
-    error: "#d32f2f",
-  },
-};
 
 describe("Button", () => {
   it("renders correctly", () => {

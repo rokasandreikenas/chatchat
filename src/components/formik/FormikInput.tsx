@@ -1,7 +1,7 @@
 import { FieldAttributes, useField } from "formik";
+import ErrorMessage from "../inputs/ErrorMessage";
 import Input from "../inputs/Input";
 import Label from "../inputs/Label";
-import ErrorMessage from "../inputs/ErrorMessage";
 
 interface Props extends FieldAttributes<any> {
   label?: string;
