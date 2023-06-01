@@ -1,6 +1,7 @@
-import theme from "@/styles/theme";
 import { render } from "@testing-library/react";
+import "jest-styled-components";
 import { ThemeProvider } from "styled-components";
+import theme from "@/styles/theme";
 import Button from "../Button";
 
 describe("Button", () => {
@@ -23,13 +24,11 @@ describe("Button", () => {
     );
 
     const button = getByRole("button");
-    expect(button).toHaveStyle(`
-      padding: 1em 2em;
-      border-radius: 5px;
-      border: none;
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.primary};
-      cursor: pointer;
-    `);
+    expect(button).toHaveStyleRule("padding", "1em 2em");
+    expect(button).toHaveStyleRule("border-radius", "5px");
+    expect(button).toHaveStyleRule("border", "none");
+    expect(button).toHaveStyleRule("color", theme.colors.white);
+    expect(button).toHaveStyleRule("background-color", theme.colors.primary);
+    expect(button).toHaveStyleRule("cursor", "pointer");
   });
 });

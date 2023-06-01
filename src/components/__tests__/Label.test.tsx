@@ -1,4 +1,5 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import "jest-styled-components";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import Label from "../inputs/Label";
@@ -23,9 +24,7 @@ describe("Label component", () => {
     );
 
     const labelElement = getByText("Test Label");
-    expect(labelElement).toHaveStyle(`
-        font-weight: 600;
-        color: ${theme.colors.darkGrey};
-      `);
+    expect(labelElement).toHaveStyleRule("font-weight", "600");
+    expect(labelElement).toHaveStyleRule("color", theme.colors.darkGrey);
   });
 });

@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import "jest-styled-components";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import ErrorMessage from "../inputs/ErrorMessage";
@@ -23,9 +24,7 @@ describe("ErrorMessage", () => {
     );
 
     const errorMessage = getByText("Test Error");
-    expect(errorMessage).toHaveStyle(`
-        font-size: 0.8rem;
-        color: ${theme.colors.error};
-      `);
+    expect(errorMessage).toHaveStyleRule("font-size", "0.8rem");
+    expect(errorMessage).toHaveStyleRule("color", theme.colors.error);
   });
 });
