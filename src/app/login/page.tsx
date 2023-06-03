@@ -11,11 +11,10 @@ import { User } from "@/types/user";
 import { loginFormInitialValues, loginValidationSchema } from "./const";
 
 const Container = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #fafafa;
 `;
 
 const StyledForm = styled(Form)`
@@ -25,7 +24,7 @@ const StyledForm = styled(Form)`
   padding: 2em;
   border-radius: 10px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   width: 500px;
 `;
 
