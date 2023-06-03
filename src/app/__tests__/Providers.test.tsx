@@ -1,12 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Providers from "../Providers";
 
-test("renders children correctly", () => {
+test("renders children correctly", async () => {
   render(
     <Providers>
       <div data-testid="child-component" />
     </Providers>
   );
 
-  expect(screen.getByTestId("child-component")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.getByTestId("child-component")).toBeInTheDocument();
+  });
 });

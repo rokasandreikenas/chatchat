@@ -2,7 +2,7 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
 import { loginFormInitialValues } from "../login/const";
-import LoginPage from "../page";
+import LoginPage from "../login/page";
 
 const mockPush = jest.fn();
 
@@ -40,7 +40,7 @@ describe("LoginPage", () => {
     fireEvent.change(passwordInput, { target: { value: "password" } });
     fireEvent.click(submitButton);
 
-    await waitFor(() => expect(mockPush).toHaveBeenCalledWith("/chat"));
+    await waitFor(() => expect(mockPush).toHaveBeenCalledWith("/"));
   });
 
   it("displays initial values correctly", () => {
