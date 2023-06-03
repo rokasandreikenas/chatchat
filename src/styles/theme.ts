@@ -9,6 +9,7 @@ const theme: DefaultTheme = {
     white: "#fff",
     background: "#fafafa",
     error: "#d32f2f",
+    border: "#eaeaea",
   },
 };
 
