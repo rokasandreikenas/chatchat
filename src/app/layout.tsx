@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import StyledComponentsRegistry from "../lib/registry";
+import MainRootLayout from "@/layouts/MainRootLayout";
 import "../styles/global.css";
 import Providers from "./Providers";
 
@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <MainRootLayout>{children}</MainRootLayout>
+        </Providers>
       </body>
     </html>
   );

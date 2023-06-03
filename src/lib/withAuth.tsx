@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { UserContext } from "@/context/UserContext";
+import ProtectedLayout from "@/layouts/ProtectedLayout";
 
 export const withAuth = <P extends JSX.IntrinsicAttributes>(
   Component: NextPage<P>
@@ -20,7 +21,11 @@ export const withAuth = <P extends JSX.IntrinsicAttributes>(
       return null;
     }
 
-    return <Component {...props} />;
+    return (
+      <ProtectedLayout>
+        <Component {...props} />
+      </ProtectedLayout>
+    );
   };
 
   if (Component.getInitialProps) {
