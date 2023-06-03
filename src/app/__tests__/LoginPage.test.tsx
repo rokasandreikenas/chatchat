@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import theme from "@/styles/theme";
-import { loginFormInitialValues } from "../const";
+import { loginFormInitialValues } from "../login/const";
 import LoginPage from "../page";
 
 const mockPush = jest.fn();
