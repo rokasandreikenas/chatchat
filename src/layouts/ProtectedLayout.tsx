@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 const SidebarContainer = styled.div`
-  width: 20%;
+  min-width: 300px;
   border-right: ${({ theme }) => `1px solid ${theme.colors.border}`};
 `;
 
