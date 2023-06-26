@@ -1,18 +1,31 @@
 import Link from "next/link";
-import { styled } from "styled-components";
+import { usePathname } from "next/navigation";
+import { css, styled } from "styled-components";
 import { NavigationItem } from "@/types/routes";
 
 type Props = {
   navItem: NavigationItem;
 };
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{ pathname: string }>`
   display: flex;
   align-items: center;
   padding: 0.5rem;
   gap: 1.5rem;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 10px;
+
+  ${({ href, pathname, theme }) =>
+    href === pathname &&
+    css`
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.white};
+
+      div:first-child {
+        color: ${({ theme }) => theme.colors.white};
+      }
+    `}
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
@@ -38,9 +51,10 @@ const Name = styled.div`
 
 const NavItem = ({ navItem }: Props) => {
   const { name, path, icon } = navItem;
+  const pathname = usePathname();
 
   return (
-    <StyledLink href={path}>
+    <StyledLink href={path} pathname={pathname} passHref>
       <IconContainer>{icon}</IconContainer>
       <Name>{name}</Name>
     </StyledLink>
