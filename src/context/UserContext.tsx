@@ -4,16 +4,14 @@ import { User } from "../types/user";
 
 export const UserContext = createContext<{
   user: User | null;
-  setUser: (user: User) => void;
   isLoggedIn: boolean;
   handleLogIn: (user: User) => void;
   handleLogOut: () => void;
 }>({
   user: null,
-  setUser: () => {},
   isLoggedIn: false,
-  handleLogIn: () => {},
-  handleLogOut: () => {},
+  handleLogIn: () => ({}),
+  handleLogOut: () => ({}),
 });
 
 const UserProvider = ({ children }: PropsWithChildren) => {
@@ -30,7 +28,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <UserContext.Provider
-      value={{ user, isLoggedIn, setUser, handleLogIn, handleLogOut }}
+      value={{ user, isLoggedIn, handleLogIn, handleLogOut }}
     >
       {children}
     </UserContext.Provider>
