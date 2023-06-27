@@ -1,7 +1,9 @@
 "use client";
 
 import styled from "styled-components";
+import ChatList from "@/components/ChatList";
 import { withAuth } from "@/lib/withAuth";
+import { chats } from "./mocks";
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +22,9 @@ const ChatBoxContainer = styled.div`
 const Chat = () => {
   return (
     <Container>
-      <ChatListContainer>Test</ChatListContainer>
+      <ChatListContainer>
+        <ChatList chats={chats} />
+      </ChatListContainer>
       <ChatBoxContainer>Test</ChatBoxContainer>
     </Container>
   );
