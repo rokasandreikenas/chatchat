@@ -3,9 +3,9 @@ import ErrorMessage from "../inputs/ErrorMessage";
 import Input from "../inputs/Input";
 import Label from "../inputs/Label";
 
-interface Props extends FieldAttributes<any> {
+type Props = {
   label?: string;
-}
+} & FieldAttributes<unknown>;
 
 const FormikInput = ({ label, ...props }: Props) => {
   const [field, meta] = useField(props.name);

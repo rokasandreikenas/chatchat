@@ -5,9 +5,9 @@ import { Chat } from "@/types/chat";
 import { excludeUserEmail, getEmailInitials } from "@/utils/user";
 import Avatar from "./Avatar";
 
-interface Props {
+type Props = {
   chat: Chat;
-}
+};
 
 const ItemContainer = styled.div`
   display: flex;

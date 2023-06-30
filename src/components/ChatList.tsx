@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Chat } from "@/types/chat";
 import ChatListItem from "./ChatListItem";
 
-interface Props {
+type Props = {
   chats: Chat[];
-}
+};
 
 const ChatContainer = styled.div`
   padding: 1rem;

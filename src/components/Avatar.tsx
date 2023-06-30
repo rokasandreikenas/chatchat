@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface Props {
+type Props = {
   src?: string;
   alt?: string;
   size?: number;
   text?: string;
-}
+};
 
 const AvatarContainer = styled.div<Props>`
   display: flex;
