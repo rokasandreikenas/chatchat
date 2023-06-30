@@ -3,7 +3,7 @@ import { User } from "@/types/user";
 
 export const excludeUserEmail = (
   participants: Chat["participants"],
-  user: User | null
+  user?: User
 ): string[] => {
   if (!participants || !Array.isArray(participants)) {
     return [];

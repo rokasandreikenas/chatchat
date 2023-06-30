@@ -3,19 +3,19 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { User } from "../types/user";
 
 export const UserContext = createContext<{
-  user: User | null;
+  user: User | undefined;
   isLoggedIn: boolean;
   handleLogIn: (user: User) => void;
   handleLogOut: () => void;
 }>({
-  user: null,
+  user: undefined,
   isLoggedIn: false,
   handleLogIn: () => ({}),
   handleLogOut: () => ({}),
 });
 
 const UserProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useLocalStorage<User | null>("user", null);
+  const [user, setUser] = useLocalStorage<User | undefined>("user", undefined);
   const isLoggedIn = !!user;
 
   const handleLogIn = (user: User) => {
@@ -23,7 +23,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   };
 
   const handleLogOut = () => {
-    setUser(null);
+    setUser(undefined);
   };
 
   return (
