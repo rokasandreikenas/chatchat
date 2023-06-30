@@ -1,23 +1,21 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { PropsWithChildren } from "react";
 import { ThemeProvider } from "styled-components";
 import StyledComponentsRegistry from "@/lib/registry";
 import theme from "@/styles/theme";
+import { loadDynamicComponent } from "@/utils/component";
 
-const UserProvider = dynamic(
-  () => import("@/context/UserContext").then((ctx) => ctx.default),
-  {
-    ssr: false,
-  }
-);
+const UserProvider = loadDynamicComponent(import("@/context/UserContext"));
+const ChatProvider = loadDynamicComponent(import("@/context/ChatContext"));
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
     <StyledComponentsRegistry>
       <UserProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ChatProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </ChatProvider>
       </UserProvider>
     </StyledComponentsRegistry>
   );
