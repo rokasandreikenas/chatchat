@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { UserContext } from "@/context/UserContext";
 import { Chat } from "@/types/chat";
-import { excludeUserEmail, getEmailInitials } from "@/utils/user";
+import { getEmailInitials } from "@/utils/user";
 import Avatar from "./Avatar";
 
 type Props = {
   chat: Chat;
+  participants: string[];
+  firstParticipant: string;
+  isActive: boolean;
 };
 
 const ItemContainer = styled.div`
@@ -18,16 +20,27 @@ const StyledAvatar = styled(Avatar)`
   width: 40%;
 `;
 
-const ChatListItem = ({ chat }: Props) => {
-  const { user } = useContext(UserContext);
-  const participants = excludeUserEmail(chat.participants, user);
-  const firstParticipant = participants[0];
-
+const Participant = styled(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ({ isActive, ...rest }: { isActive: boolean } & PropsWithChildren) => (
+    <div {...rest} />
+  )
+)`
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.primary : undefined};
+`;
+const ChatListItem = ({
+  chat,
+  participants,
+  firstParticipant,
+  isActive,
+}: Props) => {
   return (
     <ItemContainer>
       <StyledAvatar text={getEmailInitials(participants)} />
       <div>
-        {firstParticipant}
+        <Participant isActive={isActive}>{firstParticipant}</Participant>
+        <div>{chat.messages[0].text}</div>
         <div>last activity</div>
       </div>
     </ItemContainer>

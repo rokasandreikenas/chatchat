@@ -1,7 +1,9 @@
 "use client";
 
+import { useContext } from "react";
 import styled from "styled-components";
 import ChatList from "@/components/ChatList";
+import { ChatContext } from "@/context/ChatContext";
 import { withAuth } from "@/lib/withAuth";
 import { chats } from "./mocks";
 
@@ -20,12 +22,13 @@ const ChatBoxContainer = styled.div`
 `;
 
 const Chat = () => {
+  const { activeChat } = useContext(ChatContext);
   return (
     <Container>
       <ChatListContainer>
         <ChatList chats={chats} />
       </ChatListContainer>
-      <ChatBoxContainer>Test</ChatBoxContainer>
+      <ChatBoxContainer>Active chat {activeChat?.id}</ChatBoxContainer>
     </Container>
   );
 };
