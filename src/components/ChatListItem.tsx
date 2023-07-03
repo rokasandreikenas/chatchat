@@ -20,6 +20,10 @@ const StyledAvatar = styled(Avatar)`
   width: 40%;
 `;
 
+const InfoContainer = styled.div`
+  width: 100%;
+`;
+
 const Participant = styled(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ isActive, ...rest }: { isActive: boolean } & PropsWithChildren) => (
@@ -29,20 +33,50 @@ const Participant = styled(
   color: ${({ isActive, theme }) =>
     isActive ? theme.colors.primary : undefined};
 `;
+
+const UpperTextRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
+const AdditionalInfo = styled.div`
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.darkGrey};
+`;
+
+const Message = styled.div`
+  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.grey};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200px;
+  white-space: nowrap;
+`;
+
 const ChatListItem = ({
   chat,
   participants,
   firstParticipant,
   isActive,
 }: Props) => {
+  const lastMessage = chat.messages[chat.messages.length - 1];
+  const activity = lastMessage.timestamp;
   return (
     <ItemContainer>
       <StyledAvatar text={getEmailInitials(participants)} />
-      <div>
-        <Participant isActive={isActive}>{firstParticipant}</Participant>
-        <div>{chat.messages[0].text}</div>
-        <div>last activity</div>
-      </div>
+      <InfoContainer>
+        <UpperTextRow>
+          <Participant isActive={isActive}>{firstParticipant}</Participant>
+          <AdditionalInfo>
+            {new Date(activity).toLocaleDateString()}
+          </AdditionalInfo>
+        </UpperTextRow>
+        <UpperTextRow>
+          <Message>{lastMessage.text}</Message>
+          <AdditionalInfo>2</AdditionalInfo>
+        </UpperTextRow>
+      </InfoContainer>
     </ItemContainer>
   );
 };
