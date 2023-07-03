@@ -11,7 +11,7 @@ const AvatarContainer = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ size }) => (size ? `${size}px` : "50px")};
+  min-width: ${({ size }) => (size ? `${size}px` : "50px")};
   height: ${({ size }) => (size ? `${size}px` : "50px")};
   border-radius: 50%;
   background-color: #ccc;

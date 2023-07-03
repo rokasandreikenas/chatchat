@@ -15,6 +15,7 @@ const StyledLink = styled(Link)<{ pathname: string }>`
   cursor: pointer;
   text-decoration: none;
   border-radius: 10px;
+  font-size: 1.1rem;
 
   ${({ href, pathname, theme }) =>
     href === pathname &&

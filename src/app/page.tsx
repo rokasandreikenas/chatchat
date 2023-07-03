@@ -13,12 +13,8 @@ const Container = styled.div`
 `;
 
 const ChatListContainer = styled.div`
-  width: 30%;
+  min-width: 400px;
   border-right: ${({ theme }) => `1px solid ${theme.colors.border}`};
-`;
-
-const ChatBoxContainer = styled.div`
-  width: 50%;
 `;
 
 const Chat = () => {
@@ -28,7 +24,7 @@ const Chat = () => {
       <ChatListContainer>
         <ChatList chats={chats} />
       </ChatListContainer>
-      <ChatBoxContainer>Active chat {activeChat?.id}</ChatBoxContainer>
+      <div>Active chat {activeChat?.id}</div>
     </Container>
   );
 };
